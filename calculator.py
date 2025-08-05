@@ -1,16 +1,29 @@
-num1 = 10
-num2 = 5
+# Step 1: Define operation functions
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        return "Error: Division by zero"
+    return a / b
+
+# Step 2: Map operations to functions in a dictionary
+operations = { "+": add, "-": subtract, "*": multiply, "/": divide }
+
+# Step 3: Get user input
+first_number = float(input("Enter the first number: "))
+second_number = float(input("Enter the second number: "))
 operation = input("Enter the operation (+, -, *, /): ")
 
-if operation == '+':
-    result = num1 + num2
-elif operation == '-':
-    result = num1 - num2
-elif operation == '*':
-    result = num1 * num2
-elif operation == '/':
-    result = num1 / num2
+# Step 4: Perform the operation using the dictionary
+if operation in operations:
+    result = operations[operation](first_number, second_number)
+    print(f"The result of {first_number} {operation} {second_number} is {result}")
 else:
-    result = "Invalid operation"
-print(f"The result of {num1} {operation} {num2} is: {result}")
-# Output: The result of 10 + 5 is: 15
+    print("Invalid operation. Please select from +, -, *, /.")
